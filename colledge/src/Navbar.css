@@ -1,0 +1,223 @@
+.profile-menu {
+  position: relative;
+  cursor: pointer;
+  color: #00f9ff;
+  padding: 10px;
+}
+
+.profile-name {
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #121212;
+  border: 1px solid #00f9ff;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #00f9ff;
+  z-index: 100;
+  color: white;
+  min-width: 200px;
+  text-align: left;
+}
+
+.dropdown-menu p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.dropdown-menu button {
+  background-color: #ff4da6;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.dropdown-menu button:hover {
+  background-color: #ff3370;
+}
+
+/* Navbar.css */
+
+.navbar-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e1e2f;
+  padding: 1rem 2rem;
+  box-shadow: 0 0 10px #00f9ff;
+  color: white;
+  position: sticky; /* The magic property that makes it stick */
+  top: 0;           /* Stick it to the very top of the viewport */
+  z-index: 1000; 
+}
+
+.logo {
+  color: #00f9ff;
+  font-family: Orbitron, sans-serif;
+  font-size: 1.8rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a,
+.profile-name {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.profile-name:hover {
+  color: #00f9ff;
+}
+
+.profile-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 140%;
+  right: 0;
+  background: #1e1e2f;
+  border: 1px solid #00f9ff;
+  padding: 1rem;
+  z-index: 10;
+  border-radius: 10px;
+  min-width: 180px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-menu p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.dropdown-menu button {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Navbar.css */
+.profile-menu {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+}
+
+.profile-name {
+  color: #00f9ff;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  background-color: #1e1e2f;
+  border: 1px solid #00f9ff;
+  border-radius: 5px;
+  padding: 10px;
+  min-width: 180px;
+  z-index: 999;
+  box-shadow: 0 0 10px #00f9ff;
+}
+
+.dropdown-menu p {
+  color: #fff;
+  margin: 5px 0;
+}
+
+.dropdown-menu button,
+.dropdown-menu a {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  background-color: transparent;
+  color: #00f9ff;
+  border: 1px solid #00f9ff;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* src/Navbar.css */
+/* --- ADD THIS ENTIRE BLOCK FOR THE DROPDOWN STYLES --- */
+
+/* Style the dropdown toggle button ("Share") to look like other links */
+.navbar-custom .dropdown-toggle {
+  color: #ffffff;
+  background: none;
+  border: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+
+/* Remove the default arrow from the dropdown toggle for a cleaner look */
+.navbar-custom .dropdown-toggle::after {
+  display: none;
+}
+
+/* Style the main dropdown menu container */
+.navbar-custom .dropdown-menu {
+  background-color: #1e1e2f !important; /* Dark background */
+  border: 1px solid #00c4ff !important; /* Neon border */
+  border-radius: 8px; /* Softer corners */
+  margin-top: 10px !important; /* Space between navbar and menu */
+  padding: 0.5rem 0; /* Vertical padding */
+  box-shadow: 0 5px 15px rgba(0, 196, 255, 0.2); /* Neon glow */
+  min-width: 200px; /* Ensure it's not too narrow */
+  animation: fadeInDown 0.3s ease-in-out; /* Smooth fade-in animation */
+}
+
+/* Style each individual item in the dropdown */
+.navbar-custom .dropdown-item {
+  color: #c0c0c0 !important; /* Light grey text for readability */
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: all 0.2s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Style the hover effect for dropdown items */
+.navbar-custom .dropdown-item:hover {
+  background-color: #00c4ff !important; /* Neon blue background on hover */
+  color: #12121e !important; /* Dark text for high contrast */
+  transform: translateX(5px); /* A subtle slide effect for flair */
+}
+
+/* Define the fade-in animation */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

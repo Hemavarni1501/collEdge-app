@@ -1,0 +1,77 @@
+/* src/theme.css */
+/* This file contains ONLY GLOBAL styles for the entire application. */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: linear-gradient(135deg, #1e1e2f, #2a2a40, #1e1e2f);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: #ffffff;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Global Heading Style */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00c4ff;
+  text-shadow: 0 0 8px rgba(0, 196, 255, 0.5);
+}
+
+/* Global Link Style */
+a {
+  color: #00c4ff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Global Neon Button Style */
+.btn-neon {
+  background-color: #1e1e2f;
+  border: 2px solid #00c4ff;
+  color: #00c4ff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #00c4ff, 0 0 10px #00c4ff, inset 0 0 5px #00c4ff;
+}
+
+.btn-neon:hover {
+  background-color: #00c4ff;
+  color: #12121e;
+  box-shadow: 0 0 15px #00c4ff, 0 0 25px #00c4ff, inset 0 0 5px #ffffff;
+}
+
+/* Add this to the "Form & Button Styles" section of src/theme.css */
+
+.input-neon {
+  background-color: #1e1e2f;
+  border: 2px solid #00c4ff;
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #00c4ff, inset 0 0 5px rgba(0, 196, 255, 0.5);
+}
+
+.input-neon:focus {
+  background-color: #12121e;
+  color: #ffffff;
+  box-shadow: 0 0 20px #00c4ff, inset 0 0 8px rgba(0, 196, 255, 0.7);
+}
+
+.contact{
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 196, 255, 0.5);
+}

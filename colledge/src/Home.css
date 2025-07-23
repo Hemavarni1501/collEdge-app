@@ -1,0 +1,141 @@
+/* Background and typography */
+body {
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40, #1e1e2f);
+  background-size: 400% 400%;
+  animation: neonBG 15s ease infinite;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animate the background */
+@keyframes neonBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Search bar styles */
+.input-group {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+input.form-control::placeholder {
+  color: #aaa;
+}
+
+.btn-info {
+  background-color: #00f9ff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00f9ff;
+  transition: 0.3s ease;
+}
+
+.btn-info:hover {
+  background-color: #00c9d9;
+  box-shadow: 0 0 20px #00f9ff, 0 0 30px #00f9ff;
+  transform: scale(1.05);
+}
+
+/* Pretty glowing cards */
+.pretty-card {
+  width: 220px;
+  height: 130px;
+  background: rgba(0, 0, 0, 0.3); /* subtle dark */
+  border: 1px solid #00f9ff;
+  border-radius: 15px;
+  color: #00f9ff;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 249, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pretty-card:hover {
+  background: rgba(0, 249, 255, 0.1); /* inner area changes */
+  box-shadow: 0 0 20px #00f9ff, 0 0 40px #00f9ff;
+  transform: scale(1.05);
+  color: #ffffff;
+}
+
+/* Section title */
+h2 {
+  color: #00f9ff;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 10px #00f9ff;
+}
+/* Add this to the bottom of src/Home.css */
+
+.pretty-card-link {
+  text-decoration: none; /* Removes the default underline */
+  color: inherit; /* Makes the text inside the link inherit its color */
+  display: block; /* Makes the link take up the full space of its container */
+  width: 100%;
+  transition: transform 0.2s ease-in-out; /* Adds a subtle zoom effect on hover */
+}
+
+.pretty-card-link:hover {
+  transform: scale(1.03); /* Zooms the card slightly on hover */
+  text-decoration: none !important;
+  color: inherit; /* Ensures text color doesn't change on hover */
+}
+
+/* --- ADD THIS CODE TO Home.css FOR THE NEW GRID LAYOUT --- */
+
+/* This creates the main flexible container for the cards */
+.resource-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* This centers the cards within the line */
+  gap: 4rem;
+  
+  /* --- The Fix is Here --- */
+  max-width: 1200px; /* Constrain the max width of the grid */
+  margin-left: 150px;  /* This will center the entire grid block on the page */
+  margin-right: auto; /* This will center the entire grid block on the page */
+}
+
+/* This styles the link that wraps each card */
+.pretty-card-link {
+  text-decoration: none; /* Removes the default underline */
+  color: inherit;
+  flex-basis: 300px; /* The ideal starting width of each card */
+  flex-grow: 1; /* Allows cards to expand to fill empty space */
+  max-width: 400px; /* Prevents cards from becoming too wide on large screens */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* This adds a nice hover effect to the link/card */
+.pretty-card-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 196, 255, 0.2);
+}
+
+/* --- REPLACE your old .pretty-card style with this one --- */
+/* This ensures all cards have the same height and centered text */
+.pretty-card {
+  background-color: #1e1e2f;
+  border: 2px solid #00c4ff;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  height: 150px; /* This gives all cards a consistent height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pretty-card h5 {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  color: #00c4ff;
+}

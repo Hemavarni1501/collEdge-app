@@ -1,0 +1,180 @@
+/* src/SharePost.css */
+
+.share-post-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+  min-height: 80vh;
+}
+
+.post-form-wrapper {
+  background-color: #1e1e2f;
+  border: 1px solid #3a3a5e;
+  border-radius: 15px;
+  padding: 40px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-subtitle {
+  text-align: center;
+  color: #a9a9a9;
+  margin-bottom: 30px;
+}
+
+.post-type-selector {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* src/SharePost.css */
+/* --- REPLACE the old .type-btn styles with this new, enhanced version --- */
+
+.type-btn {
+  background-color: rgba(30, 30, 47, 0.5); /* A subtle dark background */
+  border: 2px solid #3a3a5e; /* A muted border for the inactive state */
+  color: #a9a9a9; /* Muted text color for inactive state */
+  padding: 12px 25px;
+  border-radius: 50px; /* Pill-shaped buttons */
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  position: relative; /* Needed for the pseudo-element glow */
+  overflow: hidden; /* Keeps the glow contained */
+}
+
+.type-btn:hover {
+  color: #ffffff;
+  border-color: #5a5a8a; /* Slightly lighter border on hover */
+}
+
+.type-btn.active {
+  color: #ffffff;
+  border-color: #00c4ff;
+  background-color: rgba(0, 196, 255, 0.1); /* A subtle inner glow */
+  /* The full neon glow effect */
+  box-shadow: 0 0 8px rgba(0, 196, 255, 0.5), 
+              0 0 15px rgba(0, 196, 255, 0.3), 
+              inset 0 0 5px rgba(0, 196, 255, 0.2);
+}
+
+/* Optional: Add a subtle animation to the active button's icon */
+.type-btn.active svg {
+  animation: icon-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes icon-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.post-form .form-group {
+  margin-bottom: 20px;
+}
+
+.post-form label {
+  display: block;
+  color: #c0c0c0;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.post-form input,
+.post-form textarea {
+  width: 100%;
+  background-color: #12121e;
+  border: 1px solid #3a3a5e;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.post-form input:focus,
+.post-form textarea:focus {
+  outline: none;
+  border-color: #00c4ff;
+  box-shadow: 0 0 8px rgba(0, 196, 255, 0.5);
+}
+
+.submit-btn-neon {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #1e1e2f;
+  border: 2px solid #00c4ff;
+  color: #00c4ff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #00c4ff, 0 0 10px #00c4ff;
+}
+
+.submit-btn-neon:hover {
+  background-color: #00c4ff;
+  color: #12121e;
+  box-shadow: 0 0 15px #00c4ff, 0 0 25px #00c4ff;
+}
+
+/* Add this to the bottom of src/SharePost.css */
+
+.file-upload-subtitle {
+  font-size: 0.9rem;
+  color: #a9a9a9;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+.file-input {
+  width: 100%;
+  background-color: #12121e;
+  border: 1px solid #3a3a5e;
+  color: #c0c0c0;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Style the file input button provided by the browser */
+.file-input::file-selector-button {
+  background-color: #3a3a5e;
+  border: none;
+  color: #00c4ff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.file-input::file-selector-button:hover {
+  background-color: #00c4ff;
+  color: #12121e;
+}
+
+.selected-file-name {
+  font-size: 0.9rem;
+  color: #28a745; /* Green color to indicate success */
+  margin-top: 10px;
+  padding: 8px;
+  background-color: rgba(40, 167, 69, 0.1);
+  border-radius: 4px;
+}

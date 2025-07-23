@@ -1,0 +1,103 @@
+/* src/Footer.css */
+/* Styles for a clean, traditional footer */
+
+.site-footer {
+  background-color: #12121e; /* A slightly different dark shade for contrast */
+  color: #a9a9a9; /* Softer text color for readability */
+  padding: 50px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  border-top: 1px solid #333;
+}
+
+.site-footer .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px; /* Provides space between columns */
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 220px; /* Ensures columns stack on smaller screens */
+}
+
+.site-footer h3, .site-footer h4 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.site-footer h3 {
+  font-size: 24px;
+}
+
+.site-footer p {
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.footer-column.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column.links li {
+  margin-bottom: 12px;
+}
+
+.footer-column.links a {
+  color: #a9a9a9;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-column.links a:hover {
+  color: #00c4ff; /* Keep the neon highlight for consistency */
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: #a9a9a9;
+  font-size: 22px;
+  transition: color 0.2s ease-in-out;
+}
+
+.social-icons a:hover {
+  color: #00c4ff; /* Neon hover for icons */
+}
+
+.footer-bottom-bar {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #2a2a3e;
+}
+
+.footer-bottom-bar p {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+/* Add this to the bottom of src/Footer.css */
+
+.footer-logo-link {
+  text-decoration: none; /* Removes the default underline from the link */
+}
+
+.footer-logo-link:hover h3 {
+  color: #00c4ff; /* Adds a nice hover effect, matching your theme */
+  transition: color 0.2s ease-in-out;
+}
