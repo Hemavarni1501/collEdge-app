@@ -3,7 +3,7 @@
 
 const express = require("express");
 const router = express.Router();
-const Dashboard = require("../models/Dashboardm"); // Your model for saved items
+const Dashboard = require("../models/dashboardm"); // Your model for saved items
 const Resource = require("../models/Resource");   // We need the Resource model to find user uploads
 const auth = require("../middleware/auth");      // Your auth middleware
 
