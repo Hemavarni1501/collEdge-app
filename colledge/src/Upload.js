@@ -38,7 +38,7 @@ export default function UploadPage() {
 
     try {
       const config = { headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } };
-      await axios.post("http://localhost:5000/api/upload", data, config);
+      await axios.post("https://colledge-backend.onrender.com/api/upload", data, config);
       alert("Resource uploaded successfully!");
       // Reset the form
       setFormData({ subjectCode: "", title: "", resourceType: "", description: "" });

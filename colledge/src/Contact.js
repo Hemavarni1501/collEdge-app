@@ -24,7 +24,7 @@ export default function ContactPage() {
     try {
       // --- THE FIX IS HERE ---
       // Use the correct, prefixed API route
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post('https://colledge-backend.onrender.com/api/contact', formData);
       alert('Message sent successfully!');
       // Clear the form after submission
       setFormData({ name: '', email: '', subject: '', message: '' });

@@ -23,7 +23,7 @@ export default function Dashboard() {
     const token = localStorage.getItem('token');
     try {
       const config = { headers: { 'Authorization': `Bearer ${token}` } };
-      await axios.delete(`http://localhost:5000/api/dashboard/saved/${resourceId}`, config);
+      await axios.delete(`https://colledge-backend.onrender.com/api/dashboard/saved/${resourceId}`, config);
       setSavedResources(savedResources.filter(item => item.resource._id !== resourceId));
       setStats(prev => ({...prev, saved: prev.saved - 1}));
       alert('Removed from dashboard.');

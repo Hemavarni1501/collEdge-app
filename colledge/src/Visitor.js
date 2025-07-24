@@ -24,7 +24,7 @@ export default function VisitorRegister() {
     event.preventDefault();
     try {
       // Call the same universal registration endpoint
-      await axios.post("http://localhost:5000/api/auth/register", formData);
+      await axios.post("https://colledge-backend.onrender.com/api/auth/register", formData);
       alert("Visitor account created successfully! Please log in.");
       navigate("/login");
     } catch (error) {

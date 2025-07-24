@@ -37,7 +37,7 @@ export default function Profile() {
     }
     try {
       const config = { headers: { 'Authorization': `Bearer ${token}` } };
-      const res = await axios.put("http://localhost:5000/api/update-profile", updatedData, config);
+      const res = await axios.put("https://colledge-backend.onrender.com/api/update-profile", updatedData, config);
       alert("Profile updated successfully!");
       const freshUserData = res.data.user || updatedData;
       localStorage.setItem("user", JSON.stringify(freshUserData));

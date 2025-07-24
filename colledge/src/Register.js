@@ -38,7 +38,7 @@ export default function Register() {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/auth/register", registrationData);
+      await axios.post("https://colledge-backend.onrender.com/api/auth/register", registrationData);
       alert(`🎉 ${pageTitle} registered successfully!`);
       navigate("/login");
     } catch (error) {

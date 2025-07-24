@@ -27,7 +27,7 @@ export default function SearchResults() {
     try {
       const config = { headers: { 'Authorization': `Bearer ${token}` } };
       // Call the correct backend endpoint
-      await axios.post('http://localhost:5000/api/dashboard/save', { resourceId }, config);
+      await axios.post('https://colledge-backend.onrender.com/api/dashboard/save', { resourceId }, config);
       alert('Resource added to your dashboard!');
     } catch (error) {
       const message = error.response?.data?.error || 'Failed to add to dashboard.';
