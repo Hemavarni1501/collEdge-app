@@ -42,8 +42,17 @@ export default function ForgotPassword() {
       setStage(3);
       setTimeout(() => navigate('/login'), 3000);
     } catch (err) {
-      setError(err.response?.data?.error || 'An error occurred.');
-    }
+  // This will show you the full error structure in the browser console
+  console.error("API Call Failed:", err); 
+
+  // You can even inspect the response specifically if it exists
+  if (err.response) {
+    console.error("Backend Response:", err.response.data);
+  }
+
+  // Then set the error message for the user
+  setError(err.response?.data?.error || err.response?.data?.message || 'An error occurred. Please try again.');
+}
   };
 
   return (
