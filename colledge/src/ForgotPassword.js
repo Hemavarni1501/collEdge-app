@@ -37,7 +37,7 @@ export default function ForgotPassword() {
     setError('');
     setMessage('');
     try {
-      const res = await axios.post('http://localhost:5000/api/password/reset-password', { userId, answer, newPassword });
+      const res = await axios.post('https://colledge-backend.onrender.com/api/password/reset-password', { userId, answer, newPassword });
       setMessage(res.data.message);
       setStage(3);
       setTimeout(() => navigate('/login'), 3000);
