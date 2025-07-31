@@ -22,7 +22,7 @@ export default function ForgotPassword() {
     setError('');
     try {
       // Send the email to the backend
-      const res = await axios.post('http://localhost:5000/api/password/verify-user', { email });
+      const res = await axios.post('https://colledge-backend.onrender.com/api/password/verify-user', { email });
       setQuestion(res.data.question);
       setUserId(res.data.userId);
       setStage(2); // Move to the next stage
