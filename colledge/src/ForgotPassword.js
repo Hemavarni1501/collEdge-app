@@ -65,7 +65,7 @@ export default function ForgotPassword() {
       {/* --- STAGE 1 FORM --- */}
       {stage === 1 && (
         <form onSubmit={handleFindUser}>
-          <p className="text-center text-light mb-4"> TEST Enter your account's email address to begin.</p>
+          <p className="text-center text-light mb-4"> Enter your account's email address to begin.</p>
           <div className="mb-3">
             <label className="form-label text-light">Email Address:</label>
             <input type="email" className="form-control input-neon" value={email} onChange={(e) => setEmail(e.target.value)} required />
