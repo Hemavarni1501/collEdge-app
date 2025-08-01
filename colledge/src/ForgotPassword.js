@@ -15,6 +15,8 @@ export default function ForgotPassword() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
   // STAGE 1: Find the user by email
   const handleFindUser = async (e) => {
@@ -22,7 +24,7 @@ export default function ForgotPassword() {
     setError('');
     try {
       // Send the email to the backend
-      const res = await axios.post('https://colledge-backend.onrender.com/api/password/verify-user', { email });
+      const res = await axios.post(`${API_URL}/api/password/verify-user`, { email });
       setQuestion(res.data.question);
       setUserId(res.data.userId);
       setStage(2); // Move to the next stage
@@ -37,7 +39,8 @@ export default function ForgotPassword() {
     setError('');
     setMessage('');
     try {
-      const res = await axios.post('https://colledge-backend.onrender.com/api/password/reset-password', { userId, answer, newPassword });
+      const res = await axios.post(`${API_URL}/api/password/reset-password`, { userId, answer, newPassword });
+
       setMessage(res.data.message);
       setStage(3);
       setTimeout(() => navigate('/login'), 3000);
