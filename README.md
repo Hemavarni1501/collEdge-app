@@ -111,6 +111,6 @@ Here are some features I'm planning to add next:
 
 ## 📬 Contact
 
-Hemavarni - [Hemavarni Sivakumar](https://www.linkedin.com/in/hemavarni-sivakumar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) - hemavarni1501@gmail.com
+Hemavarni - [LinkedIn](https://www.linkedin.com/in/hemavarni-sivakumar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) - hemavarni1501@gmail.com
 
 Project Link: [https://github.com/Hemavarni1501/collEdge-app](https://github.com/Hemavarni1501/collEdge-app)
