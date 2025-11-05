@@ -1,7 +1,6 @@
 // server/server.js
-// Updated to load .env variables
+// Final corrected version with the static path fixed.
 
-// --- THIS IS THE FIX ---
 // Load environment variables from .env file at the very top
 require('dotenv').config();
 
@@ -21,10 +20,18 @@ const updateProfileRoute = require("./routes/update-profile");
 const passwordResetRoutes = require('./routes/passwordResetRoutes');
 
 const app = express();
+
+// --- Core Middleware ---
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+
+// --- Static File Serving Middleware ---
+// --- THIS IS THE FIX ---
+// This now correctly points to the root 'uploads' folder where Multer saves files.
+app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
+
 
 // --- API Routes ---
 app.use("/api/auth", authRoutes);
@@ -37,8 +44,6 @@ app.use("/api/visitor", visitorRoute);
 app.use("/api/update-profile", updateProfileRoute);
 
 // --- Database Connection ---
-// --- THIS IS THE FIX ---
-// Use the variable from the .env file instead of a hardcoded string
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB 🚀'))
   .catch((err) => console.error('MongoDB connection error:', err));
