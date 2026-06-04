@@ -2,7 +2,7 @@
 // Updated with a constrained width for better alignment.
 
 import React, { useState } from "react";
-import axios from "axios";
+import api from "./api";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
@@ -13,7 +13,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://colledge-backend.onrender.com/api/auth/login", {
+      const res = await api.post("/api/auth/login", {
         email,
         password,
       });

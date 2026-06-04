@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from "axios";
+import api from "./api";
 
 export default function UploadPage() {
   const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ export default function UploadPage() {
 
     try {
       const config = { headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } };
-      await axios.post("https://colledge-backend.onrender.com/api/upload", data, config);
+      await api.post("/api/upload", data, config);
       alert("Resource uploaded successfully!");
       // Reset the form
       setFormData({ subjectCode: "", title: "", resourceType: "", description: "" });
@@ -81,7 +81,7 @@ export default function UploadPage() {
             <label className="form-label">Resource Type*</label>
             <select name="resourceType" className="form-select" required value={formData.resourceType} onChange={handleChange}>
               <option value="">-- Select Type --</option>
-              <option value="Notes">Notes</option>
+              <option value="Note">Note</option>
               <option value="Question Paper">Question Paper</option>
               <option value="Textbook">Textbook</option>
               <option value="Project">Project</option>

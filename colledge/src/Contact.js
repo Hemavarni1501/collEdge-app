@@ -2,7 +2,7 @@
 // Updated and corrected version
 
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from './api';
 
 // Add any specific CSS you have for this page
 // import './Contact.css'; 
@@ -24,7 +24,7 @@ export default function ContactPage() {
     try {
       // --- THE FIX IS HERE ---
       // Use the correct, prefixed API route
-      await axios.post('https://colledge-backend.onrender.com/api/contact', formData);
+      await api.post('/api/contact', formData);
       alert('Message sent successfully!');
       // Clear the form after submission
       setFormData({ name: '', email: '', subject: '', message: '' });

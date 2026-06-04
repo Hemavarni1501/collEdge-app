@@ -29,6 +29,17 @@ import Profile from "./Profile";
 import ProtectedRoute from './ProtectedRoute.js';
 import reportWebVitals from './reportWebVitals';
 
+// Simple 404 Not Found component
+function NotFound() {
+  return (
+    <div className="container text-center mt-5">
+      <h1 style={{ fontSize: '4rem', color: '#00c4ff' }}>404</h1>
+      <p className="text-light mt-3">Oops! The page you're looking for doesn't exist.</p>
+      <a href="/home" className="btn btn-neon mt-3">Go to Home</a>
+    </div>
+  );
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -53,18 +64,19 @@ root.render(
           <Route path="/search" element={<SearchResource />} />
 
           {/* --- Sub-Group A: Protected for ANY Logged-In User --- */}
-          {/* We don't pass `allowedRoles`, so any user with a token can access this. */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
 
           {/* --- Sub-Group B: Protected for SPECIFIC Roles --- */}
-          {/* We pass the `allowedRoles` prop here. */}
           <Route element={<ProtectedRoute allowedRoles={['student', 'staff']} />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/upload" element={<UploadPage />} />
-             <Route path="/share-post" element={<SharePost />} />
+            <Route path="/share-post" element={<SharePost />} />
           </Route>
+
+          {/* --- 404 Catch-All Route --- */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

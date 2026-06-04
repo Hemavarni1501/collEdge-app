@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { FaPlus, FaEye, FaDownload, FaTrash, FaTimes } from 'react-icons/fa';
+import { API_URL } from './api';
 import './ResourceCard.css';
 
 export default function ResourceCard({ 
@@ -21,6 +22,19 @@ export default function ResourceCard({
       year: 'numeric', month: 'long', day: 'numeric'
     });
   };
+
+  // Smart URL builder: handles both Cloudinary URLs and local file paths
+  const getFileUrl = (filePath) => {
+    if (!filePath) return null;
+    // If it's already a full URL (Cloudinary), use it as-is
+    if (filePath.startsWith('http://') || filePath.startsWith('https://')) {
+      return filePath;
+    }
+    // Otherwise, prepend the API base URL for locally served files
+    return `${API_URL}/${filePath}`;
+  };
+
+  const fileUrl = getFileUrl(resource.filePath);
 
   return (
     <div className="resource-card-wrapper">
@@ -47,14 +61,12 @@ export default function ResourceCard({
           </button>
         )}
         
-        {/* --- THIS IS THE FIX --- */}
-        {/* The fragment now correctly wraps all subsequent buttons */}
-        {resource.filePath && (
+        {fileUrl && (
           <>
-            <a href={`http://localhost:5000/${resource.filePath}`} target="_blank" rel="noopener noreferrer" className="action-btn view" title="View File">
+            <a href={fileUrl} target="_blank" rel="noopener noreferrer" className="action-btn view" title="View File">
               <FaEye /> View
             </a>
-            <a href={`http://localhost:5000/${resource.filePath}`} download className="action-btn download" title="Download File">
+            <a href={fileUrl} download className="action-btn download" title="Download File">
               <FaDownload /> Download
             </a>
           </>

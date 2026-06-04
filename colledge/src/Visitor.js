@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import api from "./api";
 
 export default function VisitorRegister() {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ export default function VisitorRegister() {
     event.preventDefault();
     try {
       // Call the same universal registration endpoint
-      await axios.post("https://colledge-backend.onrender.com/api/auth/register", formData);
+      await api.post("/api/auth/register", formData);
       alert("Visitor account created successfully! Please log in.");
       navigate("/login");
     } catch (error) {

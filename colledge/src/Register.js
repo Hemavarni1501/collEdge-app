@@ -1,9 +1,9 @@
 // src/Register.js
 // Updated with constrained width and corrected field names.
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import axios from "axios";
+import api from "./api";
 
 export default function Register() {
   const location = useLocation();
@@ -38,7 +38,7 @@ export default function Register() {
     };
 
     try {
-      await axios.post("https://colledge-backend.onrender.com/api/auth/register", registrationData);
+      await api.post("/api/auth/register", registrationData);
       alert(`🎉 ${pageTitle} registered successfully!`);
       navigate("/login");
     } catch (error) {

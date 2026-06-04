@@ -22,15 +22,32 @@ const passwordResetRoutes = require('./routes/passwordResetRoutes');
 const app = express();
 
 // --- Core Middleware ---
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://colledge-djbt79vif-hemavarni1501s-projects.vercel.app',
+  // Add your production frontend URL here
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(null, true); // Allow all origins for now, restrict in production
+    }
+  },
+  credentials: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
 // --- Static File Serving Middleware ---
-// --- THIS IS THE FIX ---
-// This now correctly points to the root 'uploads' folder where Multer saves files.
-app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
+// Serve locally uploaded files from the server/uploads directory.
+// Note: New uploads go to Cloudinary, but this keeps old local files accessible.
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 // --- API Routes ---

@@ -2,7 +2,7 @@
 // The complete, final version with all features.
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./api";
 import { Link } from 'react-router-dom';
 import ResourceCard from './ResourceCard';
 import "./Dashboard.css"; // Assuming you have a Theme.css for styling
@@ -16,14 +16,26 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
 
   // --- API Call Handlers ---
-  const handleDeleteResource = async (resourceId) => { /* ... (function remains the same) ... */ };
+  const handleDeleteResource = async (resourceId) => {
+    if (!window.confirm("Are you sure you want to delete this resource? This cannot be undone.")) return;
+    const token = localStorage.getItem('token');
+    try {
+      const config = { headers: { 'Authorization': `Bearer ${token}` } };
+      await api.delete(`/api/upload/${resourceId}`, config);
+      setMyUploads(myUploads.filter(r => r._id !== resourceId));
+      setStats(prev => ({ ...prev, uploads: prev.uploads - 1 }));
+      alert('Resource deleted successfully.');
+    } catch (error) {
+      alert(error.response?.data?.error || 'Failed to delete resource.');
+    }
+  };
   
   const handleRemoveFromDashboard = async (resourceId) => {
     if (!window.confirm("Are you sure you want to remove this from your dashboard?")) return;
     const token = localStorage.getItem('token');
     try {
       const config = { headers: { 'Authorization': `Bearer ${token}` } };
-      await axios.delete(`https://colledge-backend.onrender.com/api/dashboard/saved/${resourceId}`, config);
+      await api.delete(`/api/dashboard/saved/${resourceId}`, config);
       setSavedResources(savedResources.filter(item => item.resource._id !== resourceId));
       setStats(prev => ({...prev, saved: prev.saved - 1}));
       alert('Removed from dashboard.');
@@ -40,9 +52,9 @@ export default function Dashboard() {
       const config = { headers: { 'Authorization': `Bearer ${token}` } };
       try {
         const [statsRes, uploadsRes, savedRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/dashboard/stats", config),
-          axios.get("http://localhost:5000/api/dashboard/my-uploads", config),
-          axios.get("http://localhost:5000/api/dashboard/saved", config) // Fetch saved resources
+          api.get("/api/dashboard/stats", config),
+          api.get("/api/dashboard/my-uploads", config),
+          api.get("/api/dashboard/saved", config) // Fetch saved resources
         ]);
         setStats(statsRes.data);
         setMyUploads(uploadsRes.data);
@@ -56,7 +68,28 @@ export default function Dashboard() {
     fetchDashboardData();
   }, []);
 
-  if (loading || error) { /* ... (loading/error JSX remains the same) ... */ }
+  if (loading) {
+    return (
+      <div className="container text-center mt-5">
+        <div className="spinner-border text-info" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        <p className="mt-3 text-light">Loading your dashboard...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container text-center mt-5">
+        <div className="alert alert-danger mx-auto" style={{ maxWidth: '500px' }}>
+          <h4>⚠️ Error</h4>
+          <p>{error}</p>
+          <button className="btn btn-neon" onClick={() => window.location.reload()}>Retry</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

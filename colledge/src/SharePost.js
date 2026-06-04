@@ -2,7 +2,7 @@
 // Now with an optional file upload feature.
 
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from './api';
 import { useNavigate } from 'react-router-dom';
 import { FaInfoCircle, FaCalendarAlt, FaPaperclip } from 'react-icons/fa';
 import './SharePost.css';
@@ -47,7 +47,7 @@ export default function SharePost() {
 
     try {
       const config = { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } };
-      await axios.post('https://colledge-backend.onrender.com/api/upload', data, config);
+      await api.post('/api/upload', data, config);
       alert(`${postType} shared successfully!`);
       navigate('/home');
     } catch (error) {

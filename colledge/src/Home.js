@@ -32,7 +32,7 @@ export default function HomePage() {
   };
 
   return (
-    <div>
+    <div className="home-page">
       <form className="input-group shadow-sm p-4" onSubmit={handleSearch}>
         <input
           type="text"

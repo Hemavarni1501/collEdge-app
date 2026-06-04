@@ -53,8 +53,8 @@ You need to have Node.js and npm installed on your machine.
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/Hemavarni1501/collEdge-app.git
+    cd collEdge-app
     ```
 
 2.  **Backend Setup:**

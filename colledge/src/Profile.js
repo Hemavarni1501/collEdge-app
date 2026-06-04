@@ -2,7 +2,7 @@
 // Updated to include the Logout button again.
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "./api";
 import { useNavigate } from 'react-router-dom';
 import './Profile.css';
 
@@ -37,7 +37,7 @@ export default function Profile() {
     }
     try {
       const config = { headers: { 'Authorization': `Bearer ${token}` } };
-      const res = await axios.put("https://colledge-backend.onrender.com/api/update-profile", updatedData, config);
+      const res = await api.put("/api/update-profile", updatedData, config);
       alert("Profile updated successfully!");
       const freshUserData = res.data.user || updatedData;
       localStorage.setItem("user", JSON.stringify(freshUserData));
@@ -72,7 +72,7 @@ export default function Profile() {
                 <div><b>Name</b></div><div>:</div>
                 <div>{editMode ? <input name="name" className="form-control" value={updatedData.name} onChange={handleChange} /> : user.name}</div>
                 <div><b>Email</b></div><div>:</div>
-                <div>{editMode ? <input name="email" className="form-control" value={updatedData.email} onChange={handleChange} /> : user.email}</div>
+                <div>{user.email}</div>
                 {(user.role === "student" || user.role === "staff") && (
                     <>
                     <div><b>Mobile No</b></div><div>:</div>
