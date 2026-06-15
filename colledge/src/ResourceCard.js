@@ -1,8 +1,5 @@
-// src/ResourceCard.js
-// Corrected JSX syntax in the card-actions section.
-
 import React from 'react';
-import { FaPlus, FaEye, FaDownload, FaTrash, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaEye, FaDownload, FaTrash, FaTimes, FaFileAlt } from 'react-icons/fa';
 import { API_URL } from './api';
 import './ResourceCard.css';
 
@@ -23,18 +20,19 @@ export default function ResourceCard({
     });
   };
 
-  // Smart URL builder: handles both Cloudinary URLs and local file paths
-  const getFileUrl = (filePath) => {
-    if (!filePath) return null;
-    // If it's already a full URL (Cloudinary), use it as-is
-    if (filePath.startsWith('http://') || filePath.startsWith('https://')) {
-      return filePath;
-    }
-    // Otherwise, prepend the API base URL for locally served files
-    return `${API_URL}/${filePath}`;
-  };
+  const hasFile = resource.filePath && resource.filePath.length > 0;
 
-  const fileUrl = getFileUrl(resource.filePath);
+  // View: opens file in new browser tab
+  const viewUrl = hasFile ? `${API_URL}/api/upload/${resource._id}/file` : null;
+
+  // Download: triggers file download
+  const downloadUrl = hasFile ? `${API_URL}/api/upload/${resource._id}/download` : null;
+
+  const getFileExt = () => {
+    if (!resource.filename && !resource.filePath) return '';
+    const name = resource.filename || resource.filePath;
+    return name.split('.').pop().toUpperCase();
+  };
 
   return (
     <div className="resource-card-wrapper">
@@ -44,12 +42,15 @@ export default function ResourceCard({
           <span className="uploader-info">by {resource.user?.name || 'Unknown'}</span>
         </div>
         <div className="card-body">
-          <h4 className="card-title">{resource.title}</h4>
+          <h4 className="card-title">
+            {hasFile && <FaFileAlt style={{ marginRight: '8px', color: '#00c4ff' }} />}
+            {resource.title}
+          </h4>
           <p className="card-description">{resource.description || 'No description provided.'}</p>
         </div>
         <div className="card-meta">
-          {/* Conditionally render Subject Code only if it exists */}
-          {resource.subjectCode && <span><strong>Subject-code:</strong> {resource.subjectCode}</span>}
+          {resource.subjectCode && <span><strong>Subject:</strong> {resource.subjectCode}</span>}
+          {hasFile && <span><strong>File:</strong> {getFileExt()}</span>}
           <span><strong>Uploaded:</strong> {formatDate(resource.uploadedAt)}</span>
         </div>
       </div>
@@ -61,12 +62,12 @@ export default function ResourceCard({
           </button>
         )}
         
-        {fileUrl && (
+        {hasFile && (
           <>
-            <a href={fileUrl} target="_blank" rel="noopener noreferrer" className="action-btn view" title="View File">
+            <a href={viewUrl} target="_blank" rel="noopener noreferrer" className="action-btn view" title="View File">
               <FaEye /> View
             </a>
-            <a href={fileUrl} download className="action-btn download" title="Download File">
+            <a href={downloadUrl} className="action-btn download" title="Download File">
               <FaDownload /> Download
             </a>
           </>
