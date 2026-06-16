@@ -31,11 +31,19 @@ if (isCloudinaryConfigured) {
     });
     const cloudStorage = new CloudinaryStorage({
       cloudinary: cloudinary,
-      params: {
-        folder: 'coll-edge-uploads',
-        allowed_formats: ['jpeg', 'png', 'jpg', 'gif', 'webp', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'txt', 'csv', 'zip'],
-        resource_type: 'auto',
-      },
+      params: async (req, file) => {
+  const isRaw = ['application/pdf','application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.ms-powerpoint','application/vnd.ms-excel',
+    'text/plain','text/csv','application/zip'
+  ].includes(file.mimetype);
+  return {
+    folder: 'coll-edge-uploads',
+    resource_type: isRaw ? 'raw' : 'image',
+    access_mode: 'public',
+    type: 'upload',
+  };
+},
     });
     upload = multer({ storage: cloudStorage });
     console.log('✅ Cloudinary storage configured');
