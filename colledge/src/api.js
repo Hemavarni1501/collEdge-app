@@ -1,17 +1,23 @@
-// src/api.js
-// Centralized API configuration.
-// In production: reads REACT_APP_API_URL from Vercel env vars (your Render backend URL)
-// In development: falls back to localhost
-
 import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
-console.log('🔗 CollEdge API URL:', API_URL);
-
 const api = axios.create({
   baseURL: API_URL,
 });
+
+// Redirect to /login automatically when token expires (401)
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default api;
 export { API_URL };

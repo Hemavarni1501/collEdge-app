@@ -31,9 +31,9 @@ export default function Footer() {
           <div className="footer-column links">
             <h4>Quick Links</h4>
             <ul>
-              <li><Link to="/About">About Us</Link></li>
-              <li><Link to="/Contact">Contact</Link></li>
-              <li><Link to="/Home">Search Resources</Link></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/home">Search Resources</Link></li>
             </ul>
           </div>
 

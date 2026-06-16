@@ -17,12 +17,12 @@ export default function AuthLanding() {
           <p>Login if you're a student</p>
         </div>
 
-        <div className="auth-card" onClick={() => navigate("/student")}>
+        <div className="auth-card" onClick={() => navigate("/register/student")}>
           <h4>📝 Register as Student</h4>
           <p>Create a new student account</p>
         </div>
 
-        <div className="auth-card" onClick={() => navigate("/staff")}>
+        <div className="auth-card" onClick={() => navigate("/register/staff")}>
           <h4>👩‍🏫 Staff Register</h4>
           <p>Create staff account</p>
         </div>

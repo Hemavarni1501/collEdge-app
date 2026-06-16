@@ -17,11 +17,10 @@ const resourceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  description: {
-    type: String,
-    required: true // A description should always be required
-  },
-
+ description: {
+  type: String,
+  default: '',
+},
   // --- THESE FIELDS ARE NOW OPTIONAL ---
   subjectCode: {
     type: String,
