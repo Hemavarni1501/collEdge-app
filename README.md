@@ -1,6 +1,6 @@
 # CollEdge - Academic Resource Sharing Platform
 
-**Live Demo:** **[https://colledge-djbt79vif-hemavarni1501s-projects.vercel.app/](https://colledge-djbt79vif-hemavarni1501s-projects.vercel.app/)**
+**Live Demo:** **[https://colledge-opal.vercel.app/](https://colledge-opal.vercel.app/)**
 
 ---
 
