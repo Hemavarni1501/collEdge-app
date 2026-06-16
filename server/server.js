@@ -24,7 +24,7 @@ const app = express();
 // --- Core Middleware ---
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://colledge-djbt79vif-hemavarni1501s-projects.vercel.app',
+  'https://colledge-r19zuum2i-hemavarni1501s-projects.vercel.app',
   // Add your production frontend URL here
 ];
 
